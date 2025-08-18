@@ -1,8 +1,17 @@
 body {
-  background-color: #282A36;
-;
+  background-color: #0f0e12;
 }
 
 h1 {
   color: white;
+}
+.card {
+  background-color: #1c1a21;
+  width: 350px;
+  height: 350px;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 8px;
 }

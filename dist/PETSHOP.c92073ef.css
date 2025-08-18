@@ -1,8 +1,18 @@
 body {
-  background-color: #282a36;
+  background-color: #0f0e12;
 }
 
 h1 {
   color: #fff;
+}
+
+.card {
+  text-align: center;
+  background-color: #1c1a21;
+  border-radius: 8px;
+  place-content: center;
+  width: 350px;
+  height: 350px;
+  margin: 0 auto;
 }
 /*# sourceMappingURL=PETSHOP.c92073ef.css.map */
