@@ -1,5 +1,29 @@
 {
+  "name": "petshop",
+  "description": "Aplicacao web  para agendamento de horario em PETSHOP",
+  "author": "Deivid Martins",
+  "source": "src/index.html",
+  "browserslist": ">0.5%, last 2 versions, not dead",
+  "scripts": {
+    "json-server": "json-server --watch data.json --port 3333",
+    "start": "parcel src/index.html"
+  },
   "dependencies": {
+    "dayjs": "^1.11.13",
     "json-server": "^1.0.0-alpha.21"
-  }
+  },
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deivid94/PETSHOP.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deivid94/PETSHOP/issues"
+  },
+  "homepage": "https://github.com/deivid94/PETSHOP#readme"
 }
