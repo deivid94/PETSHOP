@@ -1,7 +1,22 @@
 {
-  "animais": {
-    "id": "",
-    "name": "lilica",
-    "tutor": "zezinho"
-  }
+  "agendamentos": [
+    {
+      "id": 1,
+      "petNome": "Thor",
+      "donoNome": "Fernanda Costa",
+      "servico": "Vacinação",
+      "observacao": "Ele costuma morder",
+      "data": "2024-10-01",
+      "hora": "09:00"
+    },
+    {
+      "id": 2,
+      "petNome": "Mel",
+      "donoNome": "João Souza",
+      "servico": "Corte de Unhas",
+      "observacao": "Nao gosta de agua gelada",
+      "data": "2024-10-01",
+      "hora": "13:00"
+    }
+  ]
 }
