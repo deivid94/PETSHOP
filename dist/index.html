@@ -1,62 +1,64 @@
-<!DOCTYPE html><html lang="pt-br"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/PETSHOP.c92073ef.css">
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/PETSHOP.c92073ef.css" />
     <title>PETSHOP</title>
   </head>
   <body>
-    
-      <div class=""></div>
-      <header>
-        <img src="/logo.8bb9af93.svg" alt="logo mundo pet">
-      </header>
-      <main>
-        <form action="" method="post">
-          <div>
-            <h1>Sua agenda</h1>
-            <p>
-              Aqui você pode ver todos os clientes e serviços agendado para
-              hoje.
-            </p>
-            <label for="data">Selecione uma data:</label>
-            <input type="date" id="data" name="datra">
-          </div>
+    <div class=""></div>
+    <header>
+      <img src="/logo.8bb9af93.svg" alt="logo mundo pet" />
+    </header>
+    <main>
+      <form action="" method="post">
+        <div>
+          <h1>Sua agenda</h1>
+          <p>
+            Aqui você pode ver todos os clientes e serviços agendado para hoje.
+          </p>
+          <label for="data">Selecione uma data:</label>
+          <input type="date" id="data" name="datra" />
+        </div>
+      </form>
+
+      <section class="agendamentos">
+        <div class="card">
+          <span class="Data-hora"></span>
+          <span>
+            <p class="">09:00</p>
+            <p class="pet">thor</p>
+            <p class="tutora">Ana carolina</p>
+            <p class="servico">Banho</p>
+            <a href="">remover agendamento</a>
+          </span>
+        </div>
+      </section>
+
+      <button type="submit" id="novo-agendamento">novo agendamento</button>
+      <section>
+        <form action="" method="post" id="agendar">
+          <label for="">Nome do tutor</label>
+          <input type="text" placeholder="nome" />
+          <label for="Nome do pet"></label>
+          <input type="text" placeholder="Nome do pet" />
+          <label for="">Telefone</label>
+          <input type="text" placeholder="telefone" />
+          <label for="">observacao/descricao</label>
+          <input type="text" placeholder="descricao do servio" />
+          <data type="datetime-local" min="2025-08-28"> </data>
+          <button type="submit">Agendar</button>
         </form>
+      </section>
+    </main>
 
-        <section class="agendamentos">
-          <div class="card">
-            <span class="Data-hora"></span>
-            <span>
-              <p class="">09:00</p>
-              <p class="pet">thor</p>
-              <p class="tutora">Ana carolina</p>
-              <p class="servico">Banho</p>
-              <a href="">remover agendamento</a>
-            </span>
-          </div>
-        </section>
-
-        <button type="submit" id="novo-agendamento">novo agendamento</button>
-        <section>
-          <form action="" method="post" id="agendar">
-            <label for="">Nome do tutor</label>
-            <input type="text" placeholder="nome">
-            <label for="Nome do pet"></label>
-            <input type="text" placeholder="Nome do pet">
-            <label for="">Telefone</label>
-            <input type="text" placeholder="telefone">
-            <label for="">observacao/descricao</label>
-            <input type="text" placeholder="descricao do servio">
-            <data type="datetime-local" min="2025-08-28"> </data>
-            <button type="submit">Agendar</button>
-          </form>
-        </section>
-      </main>
-    
-  
-
-<script type="module" src="/PETSHOP.f72d0d54.js"></script>
-</body></html>
+    <script type="module" src="/PETSHOP.f72d0d54.js"></script>
+  </body>
+</html>
