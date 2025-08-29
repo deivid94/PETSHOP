@@ -3,12 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/style.css" />
     <title>PETSHOP</title>
   </head>
   <body>
-    <h1>
-      <div class="card">Hello World</div>
       <header>
         <img src="../src/img/logo.svg" alt="logo mundo pet" />
       </header>
@@ -31,9 +35,27 @@
             <span>
               <p class="">09:00</p>
               <p class="pet">thor</p>
-              <p></p>
+              <p class="tutora">Ana carolina</p>
+              <p class="servico">Banho</p>
+              <a href="">remover agendamento</a>
             </span>
           </div>
+        </section>
+
+        <button type="submit" id="novo-agendamento">novo agendamento</button>
+        <section>
+          <form action="" method="post" id="agendar">
+            <label for="">Nome do tutor</label>
+            <input type="text" placeholder="nome" />
+            <label for="Nome do pet"></label>
+            <input type="text" placeholder="Nome do pet" />
+            <label for="">Telefone</label>
+            <input type="text" placeholder="telefone" />
+            <label for="">observacao/descricao</label>
+            <input type="text" placeholder="descricao do servio" />
+            <data type="datetime-local" min="2025-08-28"> </data>
+            <button type="submit">Agendar</button>
+          </form>
         </section>
       </main>
     </h1>

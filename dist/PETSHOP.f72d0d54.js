@@ -667,7 +667,54 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"4ZGjQ":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _listasTodosAgendamentos = require("./src/modules/ListasTodosAgendamentos");
+var _listasTodosAgendamentosDefault = parcelHelpers.interopDefault(_listasTodosAgendamentos);
 console.log("Hello World");
+
+},{"./src/modules/ListasTodosAgendamentos":"ffJR7","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"ffJR7":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>ListarTodosAgendamentos);
+var _dataJson = require("../../data.json");
+function ListarTodosAgendamentos({ agendamentos }) {
+    try {
+        for(agendamento in agendamentos)console.log(agendamento);
+    } catch  {}
+}
+
+},{"../../data.json":"4UYPk","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"4UYPk":[function(require,module,exports,__globalThis) {
+module.exports = JSON.parse('{"agendamentos":[{"id":1,"petNome":"Thor","donoNome":"Fernanda Costa","servico":"Vacina\xe7\xe3o","observacao":"Ele costuma morder","data":"2024-10-01","hora":"09:00"},{"id":2,"petNome":"Mel","donoNome":"Jo\xe3o Souza","servico":"Corte de Unhas","observacao":"Nao gosta de agua gelada","data":"2024-10-01","hora":"13:00"}]}');
+
+},{}],"jnFvT":[function(require,module,exports,__globalThis) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
 
 },{}]},["aj62f","4ZGjQ"], "4ZGjQ", "parcelRequire2191", {})
 

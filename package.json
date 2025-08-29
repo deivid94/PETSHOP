@@ -6,7 +6,8 @@
   "browserslist": ">0.5%, last 2 versions, not dead",
   "scripts": {
     "json-server": "json-server --watch data.json --port 3333",
-    "start": "parcel src/index.html"
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html"
   },
   "dependencies": {
     "dayjs": "^1.11.13",
