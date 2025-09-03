@@ -4,6 +4,7 @@ body {
   background-color: var(--bg-primary);
   font-family: "Inter Tight", sans-serif, system-ui;
   color: var(--content-primary);
+  color: #ffffff;
 }
 
 h1 {

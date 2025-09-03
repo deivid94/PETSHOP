@@ -1,3 +1,8 @@
-import ListarTodosAgendamentos from "./src/modules/ListasTodosAgendamentos";
+"use strict";
+import "./src/css/style.css";
+import ListarTodosAgendamentos from "./src/modules/ListasTodosAgendamentos.js";
+import { getAgendamentos }from "./src/services/FetchAgendamentos.js";
+import { URL } from './src/services/config.js'
 
-console.log("Hello World");
+// ListarTodosAgendamentos(URL);
+getAgendamentos();

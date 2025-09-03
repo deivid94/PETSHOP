@@ -1,11 +1,14 @@
-import { agendamentos } from '../../data.json'
+"use strict";
 
-export default function ListarTodosAgendamentos({agendamentos} ){
-    try {
-        for (agendamento in agendamentos) {
-            console.log (agendamento)
-        }
-    } catch {
+import dadosAgendamentos from "../../data.json";
 
-    }
+
+export default function ListarTodosAgendamentos(agendamento) {
+  try {
+    console.log;
+  } catch (e) {
+    console.error(e);
+  }
 }
+
+ListarTodosAgendamentos(dadosAgendamentos);
