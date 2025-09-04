@@ -1,14 +1,14 @@
-"use strict";
+import { getAgendamentos } from "../services/FetchAgendamentos.js";
+import { URL } from "../services/config.js";
 
-import dadosAgendamentos from "../../data.json";
+("use strict");
 
-
-export default function ListarTodosAgendamentos(agendamento) {
+export default async function ListarTodosAgendamentos() {
   try {
-    console.log;
-  } catch (e) {
-    console.error(e);
+    const listaDeAgendamentos = await getAgendamentos();
+    console.log(`todos os agendamentos:${listaDeAgendamentos}`);
+  } catch (error) {
+    console.log("erro ao listar agendamentos");
   }
 }
-
-ListarTodosAgendamentos(dadosAgendamentos);
+t    

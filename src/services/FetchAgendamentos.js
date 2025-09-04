@@ -13,4 +13,4 @@ export async function getAgendamentos(URL) {
     });
 }
 
-getAgendamentos(URL);
+
