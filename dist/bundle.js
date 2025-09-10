@@ -16,17 +16,7 @@
   \****************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/css/style.css */ \"./src/css/style.css\");\n/* harmony import */ var _src_modules_ListasTodosAgendamentos_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/modules/ListasTodosAgendamentos.js */ \"./src/modules/ListasTodosAgendamentos.js\");\n/* harmony import */ var _src_services_FetchAgendamentos_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/services/FetchAgendamentos.js */ \"./src/services/FetchAgendamentos.js\");\n\n\n\n\n\n(0,_src_modules_ListasTodosAgendamentos_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n(0,_src_services_FetchAgendamentos_js__WEBPACK_IMPORTED_MODULE_2__.getAgendamentos)();\n\n//# sourceURL=webpack://petshop/./app.js?\n}");
-
-/***/ }),
-
-/***/ "./data.json":
-/*!*******************!*\
-  !*** ./data.json ***!
-  \*******************/
-/***/ ((module) => {
-
-eval("{module.exports = /*#__PURE__*/JSON.parse('{\"agendamentos\":[{\"id\":1,\"petNome\":\"Thor\",\"donoNome\":\"Fernanda Costa\",\"servico\":\"Vacinação\",\"observacao\":\"Ele costuma morder\",\"data\":\"2024-10-01\",\"hora\":\"09:00\"},{\"id\":2,\"petNome\":\"Mel\",\"donoNome\":\"João Souza\",\"servico\":\"Corte de Unhas\",\"observacao\":\"Nao gosta de agua gelada\",\"data\":\"2024-10-01\",\"hora\":\"13:00\"}]}');\n\n//# sourceURL=webpack://petshop/./data.json?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/css/style.css */ \"./src/css/style.css\");\n/* harmony import */ var _src_modules_ListasTodosAgendamentos_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/modules/ListasTodosAgendamentos.js */ \"./src/modules/ListasTodosAgendamentos.js\");\n\n\n\n\n\n//REALIZAR AGENDAMENTO\n\n// ListarTodosAgendamentos(URL);\n(0,_src_modules_ListasTodosAgendamentos_js__WEBPACK_IMPORTED_MODULE_1__.ListarTodosAgendamentos)();\n\n//# sourceURL=webpack://petshop/./app.js?\n}");
 
 /***/ }),
 
@@ -46,7 +36,7 @@ eval("{__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-ext
   \************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ ListarTodosAgendamentos)\n/* harmony export */ });\n/* harmony import */ var _data_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../data.json */ \"./data.json\");\n\n\n\nfunction ListarTodosAgendamentos(agendamento) {\n  try {\n    console.log;\n  } catch (e) {\n    console.error(e);\n  }\n}\nListarTodosAgendamentos(_data_json__WEBPACK_IMPORTED_MODULE_0__);\n\n//# sourceURL=webpack://petshop/./src/modules/ListasTodosAgendamentos.js?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   ListarTodosAgendamentos: () => (/* binding */ ListarTodosAgendamentos)\n/* harmony export */ });\n/* harmony import */ var _services_FetchAgendamentos_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/FetchAgendamentos.js */ \"./src/services/FetchAgendamentos.js\");\n/* harmony import */ var _services_config_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/config.js */ \"./src/services/config.js\");\n\n\nconst perido = document.getElementsByClassName('');\nasync function ListarTodosAgendamentos() {\n  try {\n    const listaDeAgendamentos = await (0,_services_FetchAgendamentos_js__WEBPACK_IMPORTED_MODULE_0__.getAgendamentos)();\n    console.log(`todos os agendamentos:${listaDeAgendamentos}`);\n  } catch (error) {\n    console.log(\"erro ao listar agendamentos\");\n  }\n}\n\n//# sourceURL=webpack://petshop/./src/modules/ListasTodosAgendamentos.js?\n}");
 
 /***/ }),
 
@@ -56,7 +46,7 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
   \*******************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   getAgendamentos: () => (/* binding */ getAgendamentos)\n/* harmony export */ });\n/* harmony import */ var _services_config_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/config.js */ \"./src/services/config.js\");\n\nconsole.log(_services_config_js__WEBPACK_IMPORTED_MODULE_0__.URL);\nasync function getAgendamentos(URL) {\n  await fetch(`${URL}/agendamentos`).then(response => {\n    if (!response.ok) {\n      throw new Error(\"erro na requisicao\" + response.status);\n    }\n    return response.json();\n  }).then(data => {\n    console.log(data);\n  });\n}\n\n//# sourceURL=webpack://petshop/./src/services/FetchAgendamentos.js?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   getAgendamentos: () => (/* binding */ getAgendamentos)\n/* harmony export */ });\n/* harmony import */ var _services_config_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/config.js */ \"./src/services/config.js\");\n //EXCLUIR DEPOIS DE PRONTO\n\nasync function getAgendamentos(URL) {\n  await fetch(`${URL}/agendamentos`).then(response => {\n    if (!response.ok) {\n      throw new Error(\"erro na requisicao\" + response.status);\n    }\n    return response.json();\n  }).then(data => {\n    console.log(data);\n  });\n}\n\n//# sourceURL=webpack://petshop/./src/services/FetchAgendamentos.js?\n}");
 
 /***/ }),
 
@@ -66,7 +56,7 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
   \********************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   URL: () => (/* binding */ URL)\n/* harmony export */ });\nconst URL = \"http://localhost:3333/\";\n\n//# sourceURL=webpack://petshop/./src/services/config.js?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   URL: () => (/* binding */ URL)\n/* harmony export */ });\nconst URL = \"http://localhost:3333\";\n\n//# sourceURL=webpack://petshop/./src/services/config.js?\n}");
 
 /***/ })
 

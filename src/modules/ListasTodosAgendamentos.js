@@ -1,9 +1,9 @@
 import { getAgendamentos } from "../services/FetchAgendamentos.js";
 import { URL } from "../services/config.js";
 
-("use strict");
+const periodo = document.getElementsByClassName("");
 
-export default async function ListarTodosAgendamentos() {
+export async function ListarTodosAgendamentos() {
   try {
     const listaDeAgendamentos = await getAgendamentos();
     console.log(`todos os agendamentos:${listaDeAgendamentos}`);
@@ -11,4 +11,3 @@ export default async function ListarTodosAgendamentos() {
     console.log("erro ao listar agendamentos");
   }
 }
-t    
