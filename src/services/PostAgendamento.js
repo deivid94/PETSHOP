@@ -1,5 +1,7 @@
 import URL from "../services/config.js";
 
+console.log("nao buscou", URL);
+
 export async function postAgendamento(dados) {
   console.log(dados);
   const response = await fetch(`${URL}/agendamentos`, {

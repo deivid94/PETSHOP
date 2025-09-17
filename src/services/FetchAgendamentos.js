@@ -1,4 +1,3 @@
-import { URL } from "../services/config.js"; //EXCLUIR DEPOIS DE PRONTO
 
 export async function getAgendamentos(URL) {
   await fetch(`${URL}/agendamentos`)
@@ -12,5 +11,3 @@ export async function getAgendamentos(URL) {
       console.log(data);
     });
 }
-
-
