@@ -1,9 +1,11 @@
-import URL from "../services/config.js";
+import { URL } from "../services/config.js";
 
-console.log("nao buscou", URL);
+console.log(`${URL}/agendamentos`);
 
 export async function postAgendamento(dados) {
-  console.log(dados);
+
+  try {
+    
   const response = await fetch(`${URL}/agendamentos`, {
     method: "POST",
     headers: {
@@ -12,9 +14,12 @@ export async function postAgendamento(dados) {
     body: JSON.stringify(dados),
   });
 
-  if (!response.ok) {
-    throw new Error("erro ao cadastrar agendamento");
+  return await response.json();
+  } catch (error){
+    
+    throw new error ("erro ao cadastrar agendamento")
+    
   }
 
-  return await response.json();
+  
 }
