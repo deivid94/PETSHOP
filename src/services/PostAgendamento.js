@@ -12,6 +12,7 @@ export async function postAgendamento(dados) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(dados),
+    
   });
 
   return await response.json();

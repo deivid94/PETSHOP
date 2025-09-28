@@ -45,14 +45,22 @@
         <button type="submit" id="novo-agendamento">novo agendamento</button>
         <section>
           <form action="" method="post" id="agendar">
-            <label for="">Nome do tutor</label>
-            <input type="text" placeholder="nome" />
-            <label for="Nome do pet"></label>
-            <input type="text" placeholder="Nome do pet" />
+
+            <label for=""></label>Nome do tutor</label>
+            <input type="text" id="tutor" placeholder="nome" />
+
+            <label for="Nome do pet" ></label>
+            <input type="text" id="nomePet" placeholder="Nome do pet" />
+
             <label for="">Telefone</label>
-            <input type="text" placeholder="telefone" />
+            <input type="text" id="telefone" placeholder="telefone" />
+
+            <label for="">Servico</label>
+            <input type="text" id="servico" placeholder="servico" />
+
             <label for="">observacao/descricao</label>
-            <input type="text" placeholder="descricao do servio" />
+            <input type="text" id="observacao" placeholder="descricao do servio" />
+
             <data type="datetime-local" min="2025-08-28"> </data>
             <button type="submit" id="enviar-formulario">Agendar</button>
           </form>
