@@ -1,7 +1,5 @@
 import { URL } from "../services/config.js";
 
-console.log(`${URL}/agendamentos`);
-
 export async function postAgendamento(dados) {
 
   try {
@@ -21,6 +19,5 @@ export async function postAgendamento(dados) {
     throw new error ("erro ao cadastrar agendamento")
     
   }
-
   
 }
