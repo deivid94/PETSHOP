@@ -5,8 +5,8 @@ import {realizarAgendamento} from "./src/modules/RealizarAgendamento.js";
 
 //REALIZAR AGENDAMENTO
 
-// ListarTodosAgendamentos(URL);
+
 ListarTodosAgendamentos();
 
-realizarAgendamento ()
+
 

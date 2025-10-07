@@ -1,13 +1,15 @@
 export async function getAgendamentos(URL) {
-  await fetch(`${URL}/agendamentos`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("erro na requisicao" + response.status);
-      } else {
-        return response.json();
-      }
-    })
-    .then((data) => {
-      return data
-    });
+  
+  try {
+    const response = await fetch(`${URL}/agendamentos`)
+    if (!response.ok){
+    throw new Error("erro na requisicao" + response.status);
+
+    }
+    const dadosAgendamentos = await  response.json()
+    return dadosAgendamentos
+    } catch (error){
+      console.error("Erro na busca de agendamentos", error)
+      throw error;
+  }
 }
