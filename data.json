@@ -2,34 +2,28 @@
   "agendamentos": [
     {
       "id": "1",
-      "petNome": "Thor",
-      "donoNome": "Fernanda Costa",
+      "nomePet": "Thor",
+      "nome": "Fernanda Costa",
       "servico": "Vacinação",
       "observacao": "Ele costuma morder",
       "data": "2024-10-01",
       "hora": "09:00"
     },
     {
-      "id": "8252",
-      "dados": {
-        "id": "202510020012327630.4097614028633443",
-        "nome": "deivid",
-        "nomePet": "thor",
-        "telefone": "18888888",
-        "observacao": "fofinho",
-        "servico": "banho"
-      }
+      "id": "202510192013543790.33967404497662745",
+      "nome": "teste",
+      "nomePet": "cachorinho",
+      "telefone": "489961972",
+      "observacao": "teste",
+      "servico": "banho"
     },
     {
-      "id": "25ed",
-      "dados": {
-        "id": "202510022211570840.4716090693514563",
-        "nome": "lucas",
-        "nomePet": "mimi",
-        "telefone": "48996658178",
-        "observacao": "teste teste",
-        "servico": "banho"
-      }
+      "id": "202510212246109460.3067594218770153",
+      "nome": "jhenifer",
+      "nomePet": "holmes",
+      "telefone": "48996197294",
+      "observacao": "gosta de agua quente",
+      "servico": "banho"
     }
   ]
 }
