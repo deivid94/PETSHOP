@@ -46,21 +46,27 @@
         <section>
           <form action="" method="post" id="agendar">
             <label for="">Nome do tutor</label>
-            <input type="text" id="tutor" placeholder="nome" />
+            <input type="text" id="tutor" placeholder="nome"  required/>
 
             <label for="Nome do pet"></label>
-            <input type="text" id="nomePet" placeholder="Nome do pet" />
+            <input type="text" id="nomePet" placeholder="Nome do pet" required />
 
             <label for="">Telefone</label>
-            <input type="text" id="telefone" placeholder="telefone" />
+            <input type="text" id="telefone" placeholder="telefone"  required/>
 
             <label for="">Servico</label>
-            <input type="text" id="servico" placeholder="Servico" />
+            <input type="text" id="servico" placeholder="Servico" required/>
 
             <label for="">observacao/descricao</label>
-            <input type="text" id="observacao" placeholder="descricao do servico" />
+            <input type="text" id="observacao" placeholder="descricao do servico" required />
 
-            <data type="datetime-local" min="2025-08-28"> </data>
+            <label for="data">Selecione uma data</label>
+            <input type="date" id="dateAgendamento" name="data" min="2025-08-28" required>  </input>
+
+            
+
+            <label for="appointment-time">Selecione hora</label>
+            <input type="time" id="hora" name="appointment-time" min="09:00" max="17:00" required>
             <button type="submit" id="enviar-formulario">Agendar</button>
           </form>
 

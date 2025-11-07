@@ -31,13 +31,13 @@
 
         <section class="agendamentos">
           <div class="card">
-            <span class="Data-hora"></span>
-            <span id="card-conteudo-agendamento">
-              <p class="horario">09:00</p>
+            <span class="Data-hora">MANHA</span>
+            <span id="info-agendamentos">
+              <!-- <p class="horario">09:00</p>
               <p class="pet">thor</p>
               <p class="tutora">Ana carolina</p>
               <p class="servico">Banho</p>
-              <a href="">remover agendamento</a>
+              <a href="">remover agendamento</a> -->
             </span>
           </div>
         </section>
@@ -46,21 +46,27 @@
         <section>
           <form action="" method="post" id="agendar">
             <label for="">Nome do tutor</label>
-            <input type="text" id="tutor" placeholder="nome" />
+            <input type="text" id="tutor" placeholder="nome"  required/>
 
             <label for="Nome do pet"></label>
-            <input type="text" id="nomePet" placeholder="Nome do pet" />
+            <input type="text" id="nomePet" placeholder="Nome do pet" required />
 
             <label for="">Telefone</label>
-            <input type="text" id="telefone" placeholder="telefone" />
+            <input type="text" id="telefone" placeholder="telefone"  required/>
 
             <label for="">Servico</label>
-            <input type="text" id="servico" placeholder="Servico" />
+            <input type="text" id="servico" placeholder="Servico" required/>
 
             <label for="">observacao/descricao</label>
-            <input type="text" id="observacao" placeholder="descricao do servico" />
+            <input type="text" id="observacao" placeholder="descricao do servico" required />
 
-            <data type="datetime-local" min="2025-08-28"> </data>
+            <label for="data">Selecione uma data</label>
+            <input type="date" id="dateAgendamento" name="data" min="2025-08-28" required>  </input>
+
+            
+
+            <label for="appointment-time">Selecione hora</label>
+            <input type="time" id="hora" name="appointment-time" min="09:00" max="17:00" required>
             <button type="submit" id="enviar-formulario">Agendar</button>
           </form>
 
