@@ -1,12 +1,19 @@
 import { getAgendamentos } from "../services/FetchAgendamentos.js";
 import { URL } from "../services/config.js";
 import criarElementoHtml from "../services/criarElementoHtml.js";
+import verificaDataAgendamento from "../services/criarElementoHtml.js";
 
 export async function ListarTodosAgendamentos() {
   try {
+    const dataSelecionada = await verificaDataAgendamento();
+    
+    if (!dataSelecionada) {
+      console.log("Nenhuma data selecionada para filtrar");
+      return;
+    }
+
     const listaDeAgendamentos = await getAgendamentos(`${URL}`);
     const card = document.querySelector(".card");
-  
 
     for (let item of listaDeAgendamentos) {
       const data = criarElementoHtml("p", "data", item.data);
@@ -16,7 +23,7 @@ export async function ListarTodosAgendamentos() {
       const servico = criarElementoHtml("p", "servico", item.servico);
 
       // card.appendChild(pet)
-    
+
       card.append(data, hora, pet, tutor, servico);
     }
   } catch (error) {

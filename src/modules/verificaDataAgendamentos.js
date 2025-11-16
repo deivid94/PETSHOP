@@ -1,12 +1,15 @@
 export function verificaDataAgendamento() {
   const dataSelecionaNoCalendarioAgendamento = document.getElementById(
-    "calendarioDosAgendamentos"
+    "datasDosAGendamentosParaMostrar"
   );
 
   dataSelecionaNoCalendarioAgendamento.addEventListener("change", (e) => {
     const dataSelecionada = e.target.value;
-    console.log(dataSelecionada);
+    
+    return dataSelecionada
   });
-
-  console.log(dataSelecionaNoCalendarioAgendamento);
 }
+
+
+
+
