@@ -6,7 +6,7 @@ import verificaDataAgendamento from "../services/criarElementoHtml.js";
 export async function ListarTodosAgendamentos() {
   try {
     const dataSelecionada = await verificaDataAgendamento();
-    
+
     if (!dataSelecionada) {
       console.log("Nenhuma data selecionada para filtrar");
       return;
