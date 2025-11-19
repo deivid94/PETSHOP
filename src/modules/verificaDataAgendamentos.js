@@ -5,11 +5,6 @@ export function verificaDataAgendamento() {
 
   dataSelecionaNoCalendarioAgendamento.addEventListener("change", (e) => {
     const dataSelecionada = e.target.value;
-    
-    return dataSelecionada
+    return dataSelecionada;
   });
 }
-
-
-
-

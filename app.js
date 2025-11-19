@@ -17,7 +17,7 @@ function definirDataAtualNoInput() {
     }
 
     const dataAtualFormatada = dayjs().format("YYYY-MM-DD");
-    
+
     inputData.value = dataAtualFormatada;
   } catch (error) {
     console.log(`${error} data nao carregada`);
@@ -29,5 +29,5 @@ document.addEventListener("DOMContentLoaded", function () {
   definirDataAtualNoInput();
   ListarTodosAgendamentos();
   realizarAgendamento();
-  //verificaDataAgendamento();
+  verificaDataAgendamento();
 });
