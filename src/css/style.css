@@ -33,3 +33,25 @@ p {
 .hidden {
   display: none;
 }
+.matutino {
+  display: block;
+  border: 1px solid red;
+  background-color: aliceblue;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.vespertino {
+  border: 1px solid blue;
+  background-color: aliceblue;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.noturno {
+  border: 1px solid green;
+  background-color: aliceblue;
+  color: black;
+  
+
+}

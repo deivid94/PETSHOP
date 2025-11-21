@@ -1,9 +1,9 @@
-import dayjs  from "dayjs";
+import dayjs from "dayjs";
 
-export default function criarID (){
-    const data = dayjs().format('YYYYMMDDHHmmssSSS')
-    const id = Math.random().toString(10)
-    return `${data}${id}`
+export default function criarID() {
+  const data = dayjs().format("YYYYMMDDHH");
+  const id = Math.random().toString(10);
+  return `${data}${id}`;
 }
 
-console.log (criarID())
+console.log(criarID());
