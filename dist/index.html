@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
+  
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,10 +12,10 @@
     />
     <link rel="stylesheet" href="css/style.css" />
     <title>PETSHOP</title>
-  <script defer src="bundle.js"></script><link href="style.css" rel="stylesheet"></head>
+  </head>
   <body>
       <header>
-        <img src="./assets/img/logo.svg" alt="logo mundo pet" />
+        <img src="./assets/img/logo.svg" alt="" />
       </header>
       <main>
         <form action="" method="post">
@@ -25,20 +26,29 @@
               hoje.
             </p>
             <label for="data">Selecione uma data:</label>
-            <input type="date" id="data" name="data" />
+            <input type="date" id="datasDosAGendamentosParaMostrar" name="data" />
           </div>
         </form>
 
         <section class="agendamentos">
-          <div class="card">
-            <span class="Data-hora">MANHA</span>
-            <span id="info-agendamentos">
+          <div class="card_windsurf">
+            <div class="matutino"> MANHA
+                      
               <!-- <p class="horario">09:00</p>
               <p class="pet">thor</p>
               <p class="tutora">Ana carolina</p>
               <p class="servico">Banho</p>
-              <a href="">remover agendamento</a> -->
+              <a href class="link"> <i> DELETAR</i> </a>
+
+            </div>
+            ="">remover agendamento</a> -->
             </span>
+          </div>
+          <div class="vespertino">
+            TARDE
+          </div>
+          <div class="noturno">
+            NOTURNO
           </div>
         </section>
 

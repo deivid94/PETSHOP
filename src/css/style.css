@@ -1,57 +1,581 @@
-@import url(global.css);
+/* --- 1. VARIÁVEIS & RESET (Base do Projeto) --- */
+:root {
+  --bg-body: #121214;
+  --bg-card: #202024; /* Fundo do Modal e Cards */
+  --bg-input: #121214; /* Fundo dos Inputs (Mais escuro) */
+  --border-color: #323238;
+  --text-title: #e1e1e6;
+  --text-body: #c4c4cc;
+  --text-muted: #8d8d99;
+  --primary: #9274e3; /* Roxo Principal */
+  --primary-hover: #7c5fda;
+
+  --icon-morning: #66c7f4;
+  --icon-afternoon: #fba94c;
+  --icon-night: #f4e666;
+
+  --font-family: "Inter", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
 
 body {
-  background-color: var(--bg-primary);
-  font-family: "Inter Tight", sans-serif, system-ui;
-  color: var(--content-primary);
-  color: #ffffff;
+  background-color: var(--bg-body);
+  color: var(--text-body);
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  padding-bottom: 100px;
 }
 
-h1 {
-  color: white;
-  font: 700 1.5rem/2.2;
-}
-
-p {
-  font: 100 0.875rem/1.7;
-}
-
-.link {
-  font: 500 0.6rem/1;
-}
-.card {
-  background-color: #1c1a21;
-  width: 350px;
-  height: 350px;
-  justify-content: center;
-  align-content: center;
+/* --- 2. LAYOUT DA PÁGINA (Fundo) --- */
+.container {
+  width: 100%;
+  max-width: 900px;
   margin: 0 auto;
-  text-align: center;
+  padding: 24px;
+}
+
+.brand-header {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.header-content h1 {
+  color: var(--text-title);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.header-content p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Garante que o container seja a referência de posição */
+.date-picker {
+  position: relative;
+  /* Manter os estilos anteriores... */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* ... */
+}
+
+/* O segredo: Input invisível cobrindo todo o botão */
+.date-picker input[type="date"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Torna invisível */
+  cursor: pointer;
+  z-index: 10; /* Fica acima do texto e ícones */
+}
+
+/* Ícone de calendário nativo do navegador (caso algum navegador tente forçar) */
+.date-picker input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.date-picker-container {
+  position: relative; /* Importante para o dropdown posicionar corretamente */
+  width: fit-content;
+}
+
+/* O Botão de disparo (Estilo original mantido) */
+.date-picker-trigger {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 12px 20px;
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-title);
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+  user-select: none;
 }
 
-.hidden {
-  display: none;
+.date-picker-trigger:hover,
+.date-picker-container.active .date-picker-trigger {
+  border-color: var(--primary);
+  background-color: #29292e;
 }
-.matutino {
+
+.chevron {
+  margin-left: auto;
+  transition: transform 0.2s;
+}
+
+/* Gira a seta quando aberto */
+.date-picker-container.active .chevron {
+  transform: rotate(180deg);
+}
+
+/* --- O DROPDOWN DO CALENDÁRIO --- */
+.calendar-dropdown {
+  position: absolute;
+  top: 110%; /* Logo abaixo do botão */
+  right: 0; /* Alinhado à direita (ou left: 0 se preferir) */
+  width: 280px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+
+  /* Estado inicial: Oculto */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+}
+
+/* Estado Ativo: Visível */
+.date-picker-container.active .calendar-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Header (Mês e Setas) */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  color: var(--text-title);
+  font-weight: 700;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.nav-btn:hover {
+  color: var(--text-title);
+  border-color: var(--primary);
+  background-color: rgba(146, 116, 227, 0.1);
+}
+
+/* Dias da Semana (D S T Q...) */
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Grid de Dias Numéricos */
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar-days div {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 13px;
+  color: var(--text-body);
+  transition: all 0.2s;
+}
+
+/* Dias vazios (meses anteriores/futuros) */
+.calendar-days div.empty {
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Hover no dia */
+.calendar-days div:not(.empty):hover {
+  background-color: #29292e;
+  color: var(--text-title);
+}
+
+/* Dia Selecionado (Roxo) */
+.calendar-days div.selected {
+  background-color: var(--primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Dia Atual (Borda Roxa sutil) */
+.calendar-days div.today {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+/* Se o dia atual for selecionado, remove a borda e mantem fundo cheio */
+.calendar-days div.today.selected {
+  border: none;
+  color: #fff;
+}
+
+/* Cards da Agenda */
+.schedule-section {
+  margin-bottom: 24px;
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: #29292e;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-title);
+  font-weight: 600;
+}
+.period-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.period-time {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.section-body {
+  background-color: var(--bg-card);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 8px 0;
+}
+.appointment-item {
+  padding: 16px 24px;
+  display: grid;
+  grid-template-columns: 60px 2fr 1.5fr auto;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+}
+.appointment-item:last-child {
+  border-bottom: none;
+}
+
+.time {
+  color: var(--text-title);
+  font-weight: 700;
+}
+.client-info {
+  color: var(--text-muted);
+}
+.client-info strong {
+  color: var(--text-title);
+}
+.action-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 12px;
+  text-align: right;
+}
+.action-link:hover {
+  color: #f75a68;
+}
+
+/* Botão Flutuante (Trigger do Modal) */
+.btn-new-appointment {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: var(--primary);
+  color: #ffffff;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: background 0.2s;
+  z-index: 50;
+}
+.btn-new-appointment:hover {
+  background-color: var(--primary-hover);
+}
+
+/* --- 3. ESTILOS DO MODAL (NOVA FUNCIONALIDADE) --- */
+
+/* Fundo escuro atrás do modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2px);
+  z-index: 999;
+  display: none; /* Oculto por padrão */
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Classe para mostrar o modal via JS */
+.modal-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+/* O Box do Modal */
+.modal-container {
+  background: var(--bg-card);
+  width: 100%;
+  max-width: 480px;
+  border-radius: 8px;
+  padding: 40px; /* Padding generoso como no print */
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin: 20px;
+}
+
+/* Header do Modal */
+.modal-header {
+  margin-bottom: 32px;
+  padding-right: 20px;
+}
+.modal-header h2 {
+  color: var(--text-title);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.modal-header p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Botão Fechar (X) */
+.btn-close-modal {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.btn-close-modal:hover {
+  color: #fff;
+}
+
+/* Formulário */
+.form-group {
+  margin-bottom: 16px;
+}
+.form-label {
   display: block;
-  border: 1px solid red;
-  background-color: aliceblue;
-  color: black;
-  margin-bottom: 20px;
+  color: var(--text-title);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
-.vespertino {
-  border: 1px solid blue;
-  background-color: aliceblue;
-  color: black;
-  margin-bottom: 20px;
+/* Wrapper do Input (Para colocar ícone dentro) */
+.input-wrapper {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  height: 48px;
+  transition: border-color 0.2s;
+}
+.input-wrapper:focus-within {
+  border-color: var(--primary);
 }
 
-.noturno {
-  border: 1px solid green;
-  background-color: aliceblue;
-  color: black;
-  
+.input-wrapper svg {
+  color: var(--primary); /* Ícone roxo */
+  min-width: 20px;
+  margin-right: 12px;
+}
 
+.input-field {
+  background: transparent;
+  border: none;
+  color: var(--text-body);
+  font-size: 14px;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-family);
+}
+.input-field::placeholder {
+  color: #696974;
+}
+
+/* Textarea customizada */
+.textarea-wrapper {
+  height: auto;
+  padding: 12px 16px;
+  align-items: flex-start;
+}
+.textarea-field {
+  background: transparent;
+  border: none;
+  color: var(--text-body);
+  font-size: 14px;
+  width: 100%;
+  font-family: var(--font-family);
+  resize: none;
+  min-height: 80px;
+}
+
+/* Grid para Data e Hora (Lado a lado) */
+.row-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.select-icon-wrapper {
+  position: relative;
+}
+/* Flechinha do select customizada via SVG absolute */
+.arrow-icon {
+  position: absolute;
+  right: 16px;
+  pointer-events: none;
+  color: #fff;
+}
+
+/* Botão de Ação no Modal */
+.modal-footer {
+  margin-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-submit {
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  width: 140px;
+  text-align: center;
+  transition: background 0.2s;
+}
+.btn-submit:hover {
+  background-color: var(--primary-hover);
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .date-picker {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .section-header {
+    font-size: 14px;
+    padding: 12px 16px;
+  }
+
+  .appointment-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 16px;
+  }
+  .mobile-row-top {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    width: 100%;
+  }
+  .service-info {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  .action-link {
+    margin-top: 8px;
+    align-self: flex-end;
+  }
+
+  .btn-new-appointment {
+    bottom: 20px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 90%;
+    text-align: center;
+  }
+
+  /* Ajustes Mobile do Modal */
+  .modal-container {
+    padding: 24px;
+    margin: 16px;
+  }
+  .modal-header h2 {
+    font-size: 20px;
+  }
+  /* No mobile, data e hora podem empilhar se a tela for muito pequena */
+  .row-grid {
+    gap: 12px;
+  }
+  .btn-submit {
+    width: 100%;
+  }
 }

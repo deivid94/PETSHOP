@@ -1,9 +1,7 @@
-import dayjs from "dayjs";
-
 export default function criarID() {
-  const data = dayjs().format("YYYYMMDDHH");
-  const id = Math.random().toString(10);
-  return `${data}${id}`;
-}
+  const ramdomString = Math.random().toString(36).replace(".", "");
 
-console.log(criarID());
+  const id = `${ramdomString}`;
+
+  return id;
+}

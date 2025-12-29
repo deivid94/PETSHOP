@@ -1,87 +1,264 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?  family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>PETSHOP</title>
-  </head>
-  <body>
-      <header>
-        <img src="./assets/img/logo.svg" alt="logo mundo pet" />
-      </header>
-      <main>
-        <form action="" method="post">
-          <div>
-            <h1>Sua agenda</h1>
-            <p>
-              Aqui você pode ver todos os clientes e serviços agendado para
-              hoje.
-            </p>
-            <label for="data">Selecione uma data:</label>
-            <input type="date" id="datasDosAGendamentosParaMostrar" name="data" />
-          </div>
-        </form>
+<body>
+  <div class="container">
+    <header class="brand-header">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+        />
+        <circle cx="9" cy="9" r="1.5" />
+        <circle cx="15" cy="9" r="1.5" />
+        <path
+          d="M12 17.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"
+        />
+      </svg>
+      MUNDO PET
+    </header>
 
-        <section class="agendamentos">
-          <div class="card">
-            <div class="matutino"> MANHA
-                      
-              <!-- <p class="horario">09:00</p>
-              <p class="pet">thor</p>
-              <p class="tutora">Ana carolina</p>
-              <p class="servico">Banho</p>
-              <a href
+    <div class="page-header">
+      <div class="header-content">
+        <h1>Sua agenda</h1>
+        <p>
+          Aqui você pode ver todos os clientes e serviços agendados para hoje.
+        </p>
+      </div>
+      <div class="date-picker">
+        <input type="date" id="calendarInput" />
 
+        <svg
+          width="20"
+          height="20"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          style="color: var(--primary)"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+          ></path>
+        </svg>
+
+        <span id="dateDisplay">10/01/2024</span>
+
+        <svg
+          width="16"
+          height="16"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          style="margin-left: auto"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 9l-7 7-7-7"
+          ></path>
+        </svg>
+      </div>
+    </div>
+
+    <section class="schedule-section">
+      <div class="section-header">
+        <div class="period-info">
+          <svg
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            style="color: var(--icon-morning)"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+            ></path>
+          </svg>
+          <span>Manhã</span>
+        </div>
+        <span class="period-time">09h-12h</span>
+      </div>
+      <div class="section-body">
+        <div class="appointment-item">
+          <div class="mobile-row-top">
+            <span class="time">09:00</span>
+            <div class="client-info">
+              <strong>Thor</strong> / Fernanda Costa
             </div>
-            ="">remover agendamento</a> -->
-            </span>
           </div>
-          <div class="vespertino">
-            TARDE
+          <span class="service-info">Vacinação</span>
+          <a href="#" class="action-link">Remover agendamento</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <button class="btn-new-appointment" id="openModalBtn">
+    Novo Agendamento
+  </button>
+
+  <div class="modal-overlay" id="appointmentModal">
+    <div class="modal-container">
+      <button class="btn-close-modal" id="closeModalBtn">
+        <svg
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
+
+      <div class="modal-header">
+        <h2>Agende um atendimento</h2>
+        <p>Preencha os dados do cliente para realizar o agendamento:</p>
+      </div>
+
+      <form id="formAgendamento">
+        <div class="form-group">
+          <label class="form-label">Nome do tutor</label>
+          <div class="input-wrapper">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+              />
+            </svg>
+            <input
+              type="text"
+              id="nomeDoTutor"
+              class="input-field"
+              placeholder="Helena Souza"
+            />
           </div>
-          <div class="noturno">
-            NOTURNO
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Nome do pet</label>
+          <div class="input-wrapper">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-4 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm8 0c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-4 14.5c-2.5 0-4.71-1.28-6-3.22.03-1.99 3.16-3.28 6-3.28s5.97 1.29 6 3.28c-1.29 1.94-3.5 3.22-6 3.22z"
+              />
+            </svg>
+            <input id="nomeDoPet" class="input-field" placeholder="Cheddar" />
           </div>
-        </section>
+        </div>
 
-        <button type="submit" id="novo-agendamento">novo agendamento</button>
-        <section>
-          <form action="" method="post" id="agendar">
-            <label for="">Nome do tutor</label>
-            <input type="text" id="tutor" placeholder="nome"  required/>
+        <div class="form-group">
+          <label class="form-label">Telefone</label>
+          <div class="input-wrapper">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
+              />
+            </svg>
+            <input
+              id="telefoneDoTutor"
+              type="tel"
+              class="input-field"
+              placeholder="(00) 0 0000-0000"
+            />
+          </div>
+        </div>
 
-            <label for="Nome do pet"></label>
-            <input type="text" id="nomePet" placeholder="Nome do pet" required />
+        <div class="form-group">
+          <label class="form-label">Descrição do serviço</label>
+          <div class="input-wrapper textarea-wrapper">
+            <textarea
+              id="descricaoDoServico"
+              class="textarea-field"
+              placeholder="Banho e tosa"
+            ></textarea>
+          </div>
+        </div>
 
-            <label for="">Telefone</label>
-            <input type="text" id="telefone" placeholder="telefone"  required/>
+        <div class="row-grid">
+          <div class="form-group">
+            <label class="form-label">Data</label>
+            <div class="input-wrapper select-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                />
+              </svg>
+              <input
+                id="dataDoagendamento"
+                type="date"
+                class="input-field"
+                value=""
+              />
+              <svg
+                class="arrow-icon"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </div>
+          </div>
 
-            <label for="">Servico</label>
-            <input type="text" id="servico" placeholder="Servico" required/>
+          <div class="form-group">
+            <label class="form-label">Hora</label>
+            <div class="input-wrapper select-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+                />
+              </svg>
+              <input
+                id="horaDoAgendamento"
+                type="time"
+                class="input-field"
+                value=""
+              />
+              <svg
+                class="arrow-icon"
+                width="16"
+                height="16"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
 
-            <label for="">observacao/descricao</label>
-            <input type="text" id="observacao" placeholder="descricao do servico" required />
-
-            <label for="data">Selecione uma data</label>
-            <input type="date" id="dateAgendamento" name="data" min="2025-08-28" required>  </input>
-
-            
-
-            <label for="appointment-time">Selecione hora</label>
-            <input type="time" id="hora" name="appointment-time" min="09:00" max="17:00" required>
-            <button type="submit" id="enviar-formulario">Agendar</button>
-          </form>
-
-        </section>
-      </main>
-    </h1>
-  </body>
-</html>
-<script type="module" src="../app.js"></script>
+        <div class="modal-footer">
+          <button id="agendar" type="submit" class="btn-submit">Agendar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>

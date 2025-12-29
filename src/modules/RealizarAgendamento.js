@@ -2,34 +2,54 @@ import { postAgendamento } from "../services/PostAgendamento.js";
 import criarID from "./CriarID.js";
 
 export function realizarAgendamento() {
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("agendar");
+  const form = document.getElementById("formAgendamento");
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-      const id = criarID();
-      const data = document.getElementById("dateAgendamento")?.value;
-      const hora = document.getElementById("hora")?.value;
-      const nome = document.getElementById("tutor")?.value;
-      const nomePet = document.getElementById("nomePet")?.value;
-      const telefone = document.getElementById("telefone")?.value;
-      const observacao = document.getElementById("observacao")?.value;
-      const servico = document.getElementById("servico")?.value;
+    const nomeDoTutor = document.getElementById("nomeDoTutor")?.value;
+    nomeDoTutor.replace(/[^a-zA-Z ]/g, "");
 
-      const dados = {
-        id,
-        data,
-        hora,
-        nome,
-        nomePet,
-        telefone,
-        observacao,
-        servico,
-      };
+    const nomeDoPet = document.getElementById("nomeDoPet")?.value;
+    nomeDoPet.replace(/[^a-zA-Z ]/g, "");
 
-      postAgendamento(dados);
-      window.location.reload();
-    });
+    const telefoneDotutor = document.getElementById("telefoneDoTutor")?.value;
+    telefoneDotutor.replace(/[^0-9]/g, "");
+
+    const descricaoDoServico =
+      document.getElementById("descricaoDoServico")?.value;
+
+    const dataDoagendamento =
+      document.getElementById("dataDoagendamento")?.value;
+
+    const horaDoAgendamento =
+      document.getElementById("horaDoAgendamento")?.value;
+
+    const id = criarID();
+
+    if (
+      !dataDoagendamento ||
+      !horaDoAgendamento ||
+      !nomeDoTutor ||
+      !nomeDoPet ||
+      !telefoneDotutor ||
+      !descricaoDoServico
+    ) {
+      alert("Preencha todos os campos");
+      return;
+    }
+
+    const dados = {
+      id,
+      nomeDoTutor,
+      nomeDoPet,
+      telefoneDotutor,
+      descricaoDoServico,
+      dataDoagendamento,
+      horaDoAgendamento,
+    };
+
+    postAgendamento(dados);
+    window.location.reload;
   });
 }

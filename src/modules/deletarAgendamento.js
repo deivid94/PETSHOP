@@ -1,5 +1,8 @@
+import { deleteAgendamento } from "../services/deleteAgendamento";
 
 
-export default function deletarAgendamento(idClient){
 
-}
+const botaoDeletarAgendamento = document.getElementById("deletar-agendamento");
+botaoDeletarAgendamento.addEventListener("click", () => {
+ 
+});
