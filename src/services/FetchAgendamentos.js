@@ -4,7 +4,7 @@ export async function getAgendamentos(URL) {
     console.log(response);
     if (!response.ok) {
       throw new Error("erro na requisicao" + response.status);
-      return
+      
     }
     const dadosAgendamentos = await response.json();
     return dadosAgendamentos;

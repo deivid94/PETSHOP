@@ -19,8 +19,8 @@ export function realizarAgendamento() {
     const descricaoDoServico =
       document.getElementById("descricaoDoServico")?.value;
 
-    const dataDoagendamento =
-      document.getElementById("dataDoagendamento")?.value;
+    const dataDoAgendamento =
+      document.getElementById("dataDoAgendamento")?.value;
 
     const horaDoAgendamento =
       document.getElementById("horaDoAgendamento")?.value;
@@ -28,7 +28,7 @@ export function realizarAgendamento() {
     const id = criarID();
 
     if (
-      !dataDoagendamento ||
+      !dataDoAgendamento ||
       !horaDoAgendamento ||
       !nomeDoTutor ||
       !nomeDoPet ||
@@ -45,11 +45,20 @@ export function realizarAgendamento() {
       nomeDoPet,
       telefoneDotutor,
       descricaoDoServico,
-      dataDoagendamento,
+      dataDoAgendamento,
       horaDoAgendamento,
     };
 
-    postAgendamento(dados);
+    try {
+      postAgendamento(dados);
+      if (!Response.ok) {
+        return;
+      }
+      console.log("Agendamento realizado com sucesso!" + Response.message);
+    } catch (error) {
+      console.log(error.message);
+    }
+
     window.location.reload;
   });
 }
