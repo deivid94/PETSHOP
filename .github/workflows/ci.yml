@@ -2,7 +2,7 @@ name: CI Petshop
 
 on:
   push:
-    branches: [main]
+    branches: [main, master, chore/configuracao-ambiente]
   pull_request:
     branches: [main]
 
