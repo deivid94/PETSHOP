@@ -1,11 +1,11 @@
-import { getAgendamentos } from "../services/FetchAgendamentos.js";
-import { URL } from "../services/config.js";
+import { getAgendamentos } from '../services/FetchAgendamentos.js';
+import { URL } from '../services/config.js';
 //import criarElementoHtml from "../services/criarElementoHtml.js";
-import { verificaDataAgendamento } from "../modules/verificaDataAgendamento.js";
+import { verificaDataAgendamento } from '../modules/verificaDataAgendamento.js';
 
 export async function ListarTodosAgendamentos() {
   const todosAgendamentos = await getAgendamentos(`${URL}`);
-  const diaDoCalendario = document.getElementById("dateDisplay");
+  const diaDoCalendario = document.getElementById('dateDisplay');
 
   await verificaDataAgendamento();
 
@@ -15,21 +15,21 @@ export async function ListarTodosAgendamentos() {
     diaDoCalendario.textContent = dataParaBuscar;
     console.log(diaDoCalendario.textContent);
     const todosAgendamentosFiltrados = todosAgendamentos.filter(
-      (item) => item.data === dataParaBuscar
+      (item) => item.data === dataParaBuscar,
     );
     console.log(`tem agendamento aqui?` + todosAgendamentosFiltrados);
 
     if (todosAgendamentosFiltrados.length > 0) {
       console.log(
-        "Encontrei esses agendamentos: ",
-        +todosAgendamentosFiltrados
+        'Encontrei esses agendamentos: ',
+        +todosAgendamentosFiltrados,
       );
     } else {
-      console.log("Nao encontrei agendamentos");
+      console.log('Nao encontrei agendamentos');
     }
   };
 
-  window.addEventListener("dataMudou", (e) => {
+  window.addEventListener('dataMudou', (e) => {
     const novaData = e.detail;
     atualizaragendamentosPorData(novaData);
 
