@@ -1,27 +1,42 @@
 import { getAgendamentos } from "../services/FetchAgendamentos.js";
 import { URL } from "../services/config.js";
-import criarElementoHtml from "../services/criarElementoHtml.js";
+//import criarElementoHtml from "../services/criarElementoHtml.js";
 import { verificaDataAgendamento } from "../modules/verificaDataAgendamento.js";
-import dayjs from "dayjs";
 
 export async function ListarTodosAgendamentos() {
-  const dataSelecionada = await verificaDataAgendamento();
-  console.log(dataSelecionada);
   const todosAgendamentos = await getAgendamentos(`${URL}`);
-  const agendamentoDodia = dayjs().format("YYYY-MM-DD");
-  const diaDoCalendario = document.getElementById("dateDisplay")?.value;
+  const diaDoCalendario = document.getElementById("dateDisplay");
 
-  if (!diaDoCalendario) {
-    diaDoCalendario.innerText = agendamentoDodia;
-  }
+  await verificaDataAgendamento();
 
-  for (const dataAgendamento of todosAgendamentos) {
-    if (dataAgendamento.data === dataSelecionada) {
-      const agendamentoFiltradoPorDta = todosAgendamentos.filter(
-        (item) => item.data === dataAgendamento.data
+  const atualizaragendamentosPorData = (dataParaBuscar) => {
+    if (!diaDoCalendario) return;
+
+    diaDoCalendario.textContent = dataParaBuscar;
+    console.log(diaDoCalendario.textContent);
+    const todosAgendamentosFiltrados = todosAgendamentos.filter(
+      (item) => item.data === dataParaBuscar
+    );
+    console.log(`tem agendamento aqui?` + todosAgendamentosFiltrados);
+
+    if (todosAgendamentosFiltrados.length > 0) {
+      console.log(
+        "Encontrei esses agendamentos: ",
+        +todosAgendamentosFiltrados
       );
+    } else {
+      console.log("Nao encontrei agendamentos");
     }
-  }
+  };
+
+  window.addEventListener("dataMudou", (e) => {
+    const novaData = e.detail;
+    atualizaragendamentosPorData(novaData);
+
+    if (!diaDoCalendario.textContent) {
+      atualizaragendamentosPorData(diaDoCalendario.textContent);
+    }
+  });
 }
 
 // criarElementoHtml("div", "matutino");

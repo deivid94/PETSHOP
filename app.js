@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const modal = document.getElementById("appointmentModal");
 const openBtn = document.getElementById("openModalBtn");
-const closeBtn = document.getElementById("closeModalBtn");
+const closeBtn = document.getElementById("closeModalBtn"); 
+
 
 // Abrir Modal
 openBtn.addEventListener("click", () => {
