@@ -13,17 +13,14 @@ export async function ListarTodosAgendamentos() {
     if (!diaDoCalendario) return;
 
     diaDoCalendario.textContent = dataParaBuscar;
-    console.log(diaDoCalendario.textContent);
+
+    // esta mostrando a data do
     const todosAgendamentosFiltrados = todosAgendamentos.filter(
-      (item) => item.data === dataParaBuscar,
+      (item) => item.dataDoAgendamento === dataParaBuscar,
     );
-    console.log(`tem agendamento aqui?` + todosAgendamentosFiltrados);
 
     if (todosAgendamentosFiltrados.length > 0) {
-      console.log(
-        'Encontrei esses agendamentos: ',
-        +todosAgendamentosFiltrados,
-      );
+      console.log('Encontrei esses agendamentos: ', todosAgendamentosFiltrados);
     } else {
       console.log('Nao encontrei agendamentos');
     }

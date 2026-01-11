@@ -2,16 +2,11 @@ name: CI Petshop
 
 on:
   push:
-    branches: [main, master, chore/configuracao-ambiente]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 jobs:
-
-
-
-
-
   qualidade-codigo:
     runs-on: ubuntu-latest
 
