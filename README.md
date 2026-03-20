@@ -30,6 +30,8 @@ Build PETSHOP from the source and intsall dependencies:
 
 [npm-shield]: https://img.shields.io/badge/npm-CB3837.svg?style=for-the-badge&logo=npm&logoColor=white
 [npm-link]: https://www.npmjs.com/
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
 
 ### Usage
 
