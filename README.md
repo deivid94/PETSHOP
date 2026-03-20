@@ -1,3 +1,5 @@
+This project requires the following dependencies:
+
 - **Programming Language:** JavaScript
 - **Package Manager:** Npm
 
